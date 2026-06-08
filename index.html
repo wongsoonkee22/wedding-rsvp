@@ -1,1045 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matthew & Krystal — 18.12.2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
-<style>
-:root {
-  --sage: #9CAF88;
-  --sage-light: #C5D5B5;
-  --sage-dark: #6B8F5B;
-  --cream: #FBF8F1;
-  --warm: #F5EDE0;
-  --blush: #E8D5C4;
-  --gold: #C9A96E;
-  --gold-light: #E0CFA0;
-  --text: #3A3A32;
-  --text-light: #6B6B60;
-  --white: #FFFFFF;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  color: var(--text);
-  background: var(--cream);
-  overflow-x: hidden;
-}
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background: linear-gradient(180deg, #e8e0d4 0%, var(--cream) 100%);
-  overflow: hidden;
-  padding: 2rem;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(156,175,136,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(232,213,196,0.2) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.hero-ornament {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 1px solid rgba(201,169,110,0.2);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.hero-ornament:nth-child(1) { top: 5%; left: -5%; width: 300px; height: 300px; }
-.hero-ornament:nth-child(2) { bottom: 10%; right: -3%; width: 250px; height: 250px; }
-.hero-ornament:nth-child(3) { top: 40%; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; border-color: rgba(156,175,136,0.08); }
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  animation: fadeUp 1.5s ease forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.85rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
-
-.hero-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(3rem, 8vw, 6rem);
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-}
-
-.hero-ampersand {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  color: var(--gold);
-  display: block;
-  margin: -0.3rem 0;
-}
-
-.hero-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  letter-spacing: 0.3em;
-  color: var(--text);
-  margin-top: 1.5rem;
-}
-
-.hero-venue-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 1.5rem;
-}
-
-.hero-venue {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  letter-spacing: 0.1em;
-  color: var(--text);
-  margin-top: 0.4rem;
-}
-
-.hero-venue-sub {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  color: var(--text-light);
-  margin-top: 0.2rem;
-}
-
-.hero-divider {
-  width: 60px;
-  height: 1px;
-  background: var(--gold);
-  margin: 2rem auto;
-  position: relative;
-}
-.hero-divider::before {
-  content: '♦';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.5rem;
-  color: var(--gold);
-  background: transparent;
-  padding: 0 8px;
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s ease infinite;
-  color: var(--gold);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.scroll-hint span {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-
-/* ===== SECTIONS ===== */
-section {
-  padding: 5rem 1.5rem;
-}
-
-.section-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--sage-dark);
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.section-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  text-align: center;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
-  text-align: center;
-  color: var(--text-light);
-  margin-bottom: 3rem;
-}
-
-.gold-line {
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-  margin: 1.5rem auto 3rem;
-}
-
-/* ===== PHOTO GALLERY ===== */
-.gallery {
-  background: var(--warm);
-  padding: 5rem 0;
-  overflow: hidden;
-}
-
-.gallery .section-label,
-.gallery .section-title,
-.gallery .gold-line,
-.gallery .leaf-decor {
-  padding: 0 1.5rem;
-}
-
-.gallery-scroll-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 0 0 2rem;
-}
-
-.gallery-track {
-  display: flex;
-  gap: 1.5rem;
-  padding: 0 2rem;
-  animation: scrollGallery 20s linear infinite;
-  width: max-content;
-}
-
-.gallery-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scrollGallery {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.gallery-item {
-  flex-shrink: 0;
-  width: 450px;
-  height: 350px;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.gallery-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 6px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  transition: transform 0.6s ease;
-}
-
-.gallery-img:hover {
-  transform: scale(1.03);
-}
-
-@media (max-width: 768px) {
-  .gallery-item {
-    width: 320px;
-    height: 260px;
-  }
-}
-
-/* ===== MESSAGE ===== */
-.message-section {
-  background: var(--cream);
-  text-align: center;
-  padding: 6rem 1.5rem;
-}
-
-.message-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 1.3rem;
-  line-height: 2;
-  color: var(--text);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.message-chinese {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-top: 1rem;
-}
-
-/* ===== SCHEDULE ===== */
-.schedule {
-  background: var(--warm);
-  text-align: center;
-}
-
-.timeline {
-  max-width: 500px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  position: relative;
-  padding: 2rem 0;
-}
-
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 2rem;
-  width: 8px;
-  height: 8px;
-  background: var(--gold);
-  border-radius: 50%;
-  transform: translateX(-50%);
-}
-
-.timeline-time {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: 1.8rem;
-  color: var(--gold);
-  margin-bottom: 0.4rem;
-}
-
-.timeline-event {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 1.05rem;
-  letter-spacing: 0.1em;
-  color: var(--text);
-}
-
-.timeline-event-cn {
-  font-size: 0.95rem;
-  color: var(--text-light);
-  margin-top: 0.2rem;
-}
-
-/* ===== VENUE / WHERE TO STAY ===== */
-.venue-section {
-  background: var(--cream);
-  text-align: center;
-}
-
-.venue-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: 2.2rem;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-}
-
-.venue-address {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.85rem;
-  color: var(--text-light);
-  line-height: 1.8;
-  max-width: 400px;
-  margin: 0 auto 2rem;
-}
-
-.venue-btn {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-
-.venue-btn:hover {
-  background: var(--gold);
-  color: var(--white);
-}
-
-/* ===== RSVP ===== */
-.rsvp-section {
-  background: var(--white);
-  text-align: center;
-  padding: 6rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.rsvp-section::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border: 1px solid rgba(201,169,110,0.15);
-  margin: 2rem;
-  pointer-events: none;
-}
-
-.rsvp-section .section-label { color: var(--gold); }
-.rsvp-section .section-title { color: var(--text); }
-
-.rsvp-deadline {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 1.15rem;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.rsvp-deadline-cn {
-  font-size: 0.95rem;
-  color: var(--text-light);
-  margin-bottom: 2.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.rsvp-btn {
-  display: inline-block;
-  padding: 1rem 3.5rem;
-  background: var(--text);
-  color: var(--white);
-  text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  border-radius: 0;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  border: none;
-}
-
-.rsvp-btn:hover {
-  background: var(--gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-/* ===== Q&A / FAQ ===== */
-.faq-section {
-  background: var(--cream);
-}
-
-.faq-container {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(201,169,110,0.2);
-  padding: 1.5rem 0;
-  cursor: pointer;
-}
-
-.faq-question {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: 1.15rem;
-  color: var(--text);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.faq-question::after {
-  content: '+';
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 1.2rem;
-  color: var(--gold);
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
-}
-
-.faq-item.open .faq-question::after {
-  transform: rotate(45deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-}
-
-.faq-item.open .faq-answer {
-  max-height: 300px;
-  padding-top: 1rem;
-}
-
-.faq-answer p {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: var(--text-light);
-}
-
-.faq-answer .cn {
-  font-size: 0.85rem;
-  color: var(--sage-dark);
-  margin-top: 0.3rem;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  background: var(--text);
-  color: rgba(255,255,255,0.6);
-  text-align: center;
-  padding: 3rem 1.5rem;
-}
-
-.footer-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
-  color: var(--gold-light);
-  margin-bottom: 0.5rem;
-}
-
-.footer-date {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-}
-
-/* ===== LEAF DECORATION ===== */
-.leaf-decor {
-  text-align: center;
-  color: var(--sage-light);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  opacity: 0.6;
-}
-
-/* ===== WELCOME OVERLAY ===== */
-.welcome-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: var(--cream);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-.welcome-overlay.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.welcome-content {
-  text-align: center;
-  animation: fadeUp 1.2s ease forwards;
-}
-
-.welcome-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-}
-
-.welcome-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.welcome-names span {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  color: var(--gold);
-  display: block;
-  margin: -0.2rem 0;
-}
-
-.welcome-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 1.2rem;
-  letter-spacing: 0.25em;
-  color: var(--text-light);
-  margin-top: 1rem;
-}
-
-.welcome-divider {
-  width: 50px;
-  height: 1px;
-  background: var(--gold);
-  margin: 2.5rem auto;
-}
-
-.welcome-btn {
-  display: inline-block;
-  padding: 1rem 3rem;
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--gold);
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.welcome-btn:hover {
-  background: var(--gold);
-  color: var(--white);
-}
-
-.welcome-hint {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 0.75rem;
-  color: var(--text-light);
-  margin-top: 1rem;
-  letter-spacing: 0.1em;
-}
-
-/* ===== MUSIC TOGGLE ===== */
-.music-toggle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  cursor: pointer;
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-.music-toggle.visible {
-  display: flex;
-}
-
-.music-toggle:hover {
-  background: var(--gold);
-  color: var(--white);
-  transform: scale(1.1);
-}
-
-.music-toggle.playing {
-  animation: pulse-music 1.5s ease infinite;
-}
-
-@keyframes pulse-music {
-  0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-  50% { box-shadow: 0 4px 20px rgba(201,169,110,0.35); }
-}
-
-.music-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 14px;
-}
-
-.music-bars span {
-  display: block;
-  width: 3px;
-  background: currentColor;
-  border-radius: 1px;
-  height: 4px;
-}
-
-.music-toggle.playing .music-bars span {
-  animation: bar-bounce 0.8s ease infinite;
-}
-.music-toggle.playing .music-bars span:nth-child(1) { animation-delay: 0s; }
-.music-toggle.playing .music-bars span:nth-child(2) { animation-delay: 0.15s; }
-.music-toggle.playing .music-bars span:nth-child(3) { animation-delay: 0.3s; }
-.music-toggle.playing .music-bars span:nth-child(4) { animation-delay: 0.45s; }
-
-@keyframes bar-bounce {
-  0%, 100% { height: 4px; }
-  50% { height: 14px; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-  .gallery-item-large {
-    max-height: 350px;
-  }
-  section { padding: 4rem 1.5rem; }
-  .timeline::before { display: none; }
-  .timeline-item::after { display: none; }
-  .timeline-item { padding: 1.2rem 0; }
-}
-
-
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-</head>
-<body>
-
-<!-- WELCOME SCREEN -->
-<div class="welcome-overlay" id="welcomeOverlay">
-  <div class="welcome-content">
-    <p class="welcome-label">You are cordially invited to</p>
-    <h1 class="welcome-names">Matthew <span>&</span> Krystal</h1>
-    <p class="welcome-date">18 · 12 · 2026</p>
-    <div class="welcome-divider"></div>
-    <button class="welcome-btn" id="enterBtn">Open Invitation</button>
-  </div>
-</div>
-
-<!-- MUSIC PLAYER -->
-<audio id="bgMusic" loop preload="auto">
-  <source src="music.wav" type="audio/mpeg">
-</audio>
-
-<!-- MUSIC TOGGLE -->
-<button class="music-toggle playing" id="musicToggle" title="Toggle Music">
-  <div class="music-bars">
-    <span></span><span></span><span></span><span></span>
-  </div>
-</button>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-ornament"></div>
-  <div class="hero-ornament"></div>
-  <div class="hero-ornament"></div>
-  <div class="hero-content">
-    <p class="hero-label">Together with their families</p>
-    <h1 class="hero-names">
-      Matthew
-      <span class="hero-ampersand">&</span>
-      Krystal
-    </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-date">18 · 12 · 2026</p>
-    <p class="hero-venue-label">Venue</p>
-    <p class="hero-venue">Botanica+Co at Bamboo Hill</p>
-    <p class="hero-venue-sub">Kuala Lumpur</p>
-  </div>
-  <div class="scroll-hint">
-    Scroll
-    <span>↓</span>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery">
-  <div class="leaf-decor">✿</div>
-  <p class="section-label">Our Moments</p>
-  <h2 class="section-title">A Love Story</h2>
-  <div class="gold-line"></div>
-  <div class="gallery-scroll-wrapper">
-    <div class="gallery-track">
-      <div class="gallery-item"><img src="images/photo1.jpg" alt="Closeup" class="gallery-img" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/photo2.jpg" alt="Motorcycle ride" class="gallery-img" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/photo3.jpg" alt="Horse ride" class="gallery-img" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/photo4.jpg" alt="Backdrop against sky" class="gallery-img" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/photo5.jpg" alt="Backdrop against mountain" class="gallery-img" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<!-- MESSAGE -->
-<section class="message-section">
-  <div class="reveal">
-    <div class="leaf-decor">❦</div>
-    <p class="section-label">With Love</p>
-    <h2 class="section-title">You're Invited</h2>
-    <div class="gold-line"></div>
-    <p class="message-text">We can't wait to share our special day with you.</p>
-  </div>
-</section>
-
-<!-- SCHEDULE -->
-<section class="schedule">
-  <div class="reveal">
-    <div class="leaf-decor">✿</div>
-    <h2 class="section-title">Wedding Schedule</h2>
-    <p class="section-subtitle">Friday, December 18, 2026 · 6:00 PM to 11:00 PM</p>
-    <div class="gold-line"></div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <p class="timeline-time">5:30 PM</p>
-        <p class="timeline-event">Guest Arrival</p>
-      </div>
-      <div class="timeline-item">
-        <p class="timeline-time">6:00 PM</p>
-        <p class="timeline-event">Wedding Processional</p>
-      </div>
-      <div class="timeline-item">
-        <p class="timeline-time">7:00 PM</p>
-        <p class="timeline-event">Dinner Registration</p>
-      </div>
-      <div class="timeline-item">
-        <p class="timeline-time">7:30 PM</p>
-        <p class="timeline-event">Dinner Program</p>
-      </div>
-      <div class="timeline-item">
-        <p class="timeline-time">10:00 PM</p>
-        <p class="timeline-event">Open Bar & Dancing</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VENUE -->
-<section class="venue-section">
-  <div class="reveal">
-    <div class="leaf-decor">❦</div>
-    <h2 class="section-title">The Venue</h2>
-    <div class="gold-line"></div>
-    <p class="venue-name">Botanica+Co at Bamboo Hill</p>
-    <p class="venue-address">Kuala Lumpur, Malaysia</p>
-    <a href="https://maps.app.goo.gl/L3uwd7KC2W5yf5da8" target="_blank" class="venue-btn">View on Map</a>
-  </div>
-</section>
-
-<!-- RSVP -->
-<section class="rsvp-section">
-  <div class="reveal">
-    <h2 class="section-title">RSVP</h2>
-    <div class="gold-line"></div>
-    <p class="rsvp-deadline">Please RSVP by June 30th, so we can have an accurate headcount.</p>
-    <a href="https://forms.gle/dNccsRvPsu9KjqXG7" target="_blank" class="rsvp-btn">RSVP Now</a>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="reveal">
-    <div class="leaf-decor">✿</div>
-    <h2 class="section-title">Q & A</h2>
-    <div class="gold-line"></div>
-    <div class="faq-container">
-
-      <div class="faq-item">
-        <div class="faq-question">Can I bring a date?</div>
-        <div class="faq-answer">
-          <p>Please check your invite for your +1!</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Where should I park?</div>
-        <div class="faq-answer">
-          <p>The premises will provide car parking. Parking is complimentary.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What should I wear?</div>
-        <div class="faq-answer">
-          <p>Garden party chic. Think flowy fits and comfy shoes — no need to test your heels on grass. Pastels encouraged!</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Is the wedding indoors or outdoors?</div>
-        <div class="faq-answer">
-          <p>The evening moves between outdoor and indoor spaces for a breezy, comfortable celebration.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">How will food and drinks be served?</div>
-        <div class="faq-answer">
-          <p>Expect a festive dinner with buffet and live stations. Drinks are on us — and for our kaki botol friends, BYOB because corkage is covered!</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What if I have a dietary restriction?</div>
-        <div class="faq-answer">
-          <p>Our buffet is fully halal and offers a wide variety of options, including vegetarian, seafood, and sashimi. However, we are unable to accommodate gluten-free dietary needs. If you have any concerns, please let us know when you RSVP.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What time should I arrive?</div>
-        <div class="faq-answer">
-          <p>Please refer to the schedule provided in the invitation and arrive accordingly.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Does your wedding have a theme?</div>
-        <div class="faq-answer">
-          <p>Yes, our wedding is a garden-themed celebration.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What time will the reception end?</div>
-        <div class="faq-answer">
-          <p>The reception is expected to end at 10:00 PM but join us for the after party!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <p class="footer-names">Matthew & Krystal</p>
-  <p class="footer-date">18.12.2026 · Botanico+Co at Bamboo Hill · Kuala Lumpur</p>
-</footer>
-
-<script>
-// Welcome screen + Music
-const overlay = document.getElementById('welcomeOverlay');
-const enterBtn = document.getElementById('enterBtn');
-const musicBtn = document.getElementById('musicToggle');
-const bgMusic = document.getElementById('bgMusic');
-let isPlaying = false;
-
-enterBtn.addEventListener('click', () => {
-  overlay.classList.add('hidden');
-  bgMusic.play();
-  musicBtn.classList.add('visible');
-  isPlaying = true;
-});
-
-musicBtn.addEventListener('click', () => {
-  if (isPlaying) {
-    bgMusic.pause();
-    musicBtn.classList.remove('playing');
-    isPlaying = false;
-  } else {
-    bgMusic.play();
-    musicBtn.classList.add('playing');
-    isPlaying = true;
-  }
-});
-
-// Duplicate gallery track for seamless loop
-const track = document.querySelector('.gallery-track');
-if (track) {
-  const items = track.innerHTML;
-  track.innerHTML = items + items;
-}
-
-// FAQ Accordion
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Stay Options | Matthew & Krystal</title>
+  <meta name="description" content="Nearby stay options for guests attending Matthew & Krystal's wedding at Botanica+Co, Bamboo Hills, Kuala Lumpur." />
+  <style>
+    :root {
+      --bg: #faf1e1;
+      --paper: #fffaf3;
+      --ink: #2d2b25;
+      --muted: #76685f;
+      --accent: #8f6f4e;
+      --accent-dark: #62452f;
+      --line: rgba(45, 43, 37, 0.15);
+      --box: #b9af9a;
+      --shadow: 0 24px 60px rgba(76, 55, 38, 0.12);
     }
-  });
-}, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(143, 111, 78, 0.16), transparent 28rem),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+
+    header {
+      text-align: center;
+      padding: 42px 24px 30px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255, 250, 243, 0.72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(143, 111, 78, 0.08);
+      z-index: 0;
+    }
+
+    header::before {
+      left: -90px;
+      top: -90px;
+    }
+
+    header::after {
+      right: -90px;
+      bottom: -110px;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .monogram {
+      display: block;
+      width: min(170px, 42vw);
+      margin: 0 auto 8px;
+      opacity: 0.95;
+    }
+
+    .kicker {
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      color: var(--accent-dark);
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-family: "New Icon Script", "Great Vibes", "Allura", Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 9vw, 6rem);
+      line-height: 0.95;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .sub {
+      max-width: 660px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .venue {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 24px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .section-title {
+      margin: 38px 0 16px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 360px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--box);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 18px 36px rgba(76, 55, 38, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 46px rgba(76, 55, 38, 0.13);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .card-top span {
+      display: inline-block;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(45, 43, 37, 0.08);
+      color: var(--accent-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin: 0 0 8px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      min-height: 72px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .actions a {
+      flex: 1;
+      min-width: 125px;
+      text-align: center;
+      color: #fff;
+      background: #2d2b25;
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .actions a.secondary {
+      color: var(--ink);
+      background: rgba(250, 241, 225, 0.7);
+      border: 1px solid rgba(45, 43, 37, 0.14);
+    }
+
+    .tips {
+      margin-top: 18px;
+      background: var(--box);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tips strong {
+      color: var(--ink);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 34px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        padding-top: 22px;
+      }
+
+      header {
+        border-radius: 26px;
+        padding: 34px 18px 26px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        display: block;
+      }
+
+      .section-title p {
+        margin-top: 10px;
+      }
+
+      .card-top {
+        display: block;
+      }
+
+      .card-top span {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header>
+      <p class="kicker">Wedding Stay Guide</p>
+      <!-- Upload your original monogram PNG in the same folder as this HTML file, then update the filename below if needed. -->
+      <img class="monogram" src="mk_monogram_final.png" alt="Matthew and Krystal monogram" />
+      <h1>Matthew & Krystal</h1>
+      <p class="sub">
+        Here are a few stay options guests can consider near our wedding venue,
+        <strong>Botanica+Co at Bamboo Hills, Kuala Lumpur</strong>.
+        Please check the latest rates, availability, parking and cancellation terms before booking.
+      </p>
+      <a class="venue" href="https://www.google.com/maps/search/?api=1&query=Botanica%2BCo%20Bamboo%20Hills%20Kuala%20Lumpur" target="_blank" rel="noopener">
+        📍 Open wedding venue map
+      </a>
+    </header>
+
+    <section class="section-title">
+      <div>
+        <p class="kicker">Nearby stays</p>
+        <h2>Suggested options</h2>
+      </div>
+      <p>These are not compulsory stays — they are simply nearby options to make planning easier for guests.</p>
+    </section>
+
+    <section class="grid">
+      
+      <article class="card">
+        <div class="card-top">
+          <p class="eyebrow">KL Midtown / Mont Kiara</p>
+          <span>Premium hotel • closest polished option</span>
+        </div>
+        <h2>Hyatt Regency Kuala Lumpur at KL Midtown</h2>
+        <p>Good for guests who want a proper hotel stay near MITEC, Publika and Bamboo Hills.</p>
+        <div class="actions">
+          <a href="https://www.hyatt.com/hyatt-regency/en-US/kulrk-hyatt-regency-kuala-lumpur-at-kl-midtown" target="_blank" rel="noopener">Check stay</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hyatt%20Regency%20Kuala%20Lumpur%20at%20KL%20Midtown" target="_blank" rel="noopener" class="secondary">Open map</a>
+        </div>
+      </article>
+    
+
+      <article class="card">
+        <div class="card-top">
+          <p class="eyebrow">Mont Kiara</p>
+          <span>Serviced-style stay • family friendly</span>
+        </div>
+        <h2>Hyatt House Kuala Lumpur, Mont Kiara</h2>
+        <p>Convenient for guests who prefer a comfortable longer-stay setup with shops and food nearby.</p>
+        <div class="actions">
+          <a href="https://www.hyatt.com/hyatt-house/en-US/kulxk-hyatt-house-kuala-lumpur-mont-kiara" target="_blank" rel="noopener">Check stay</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hyatt%20House%20Kuala%20Lumpur%20Mont%20Kiara" target="_blank" rel="noopener" class="secondary">Open map</a>
+        </div>
+      </article>
+    
+
+      <article class="card">
+        <div class="card-top">
+          <p class="eyebrow">Chow Kit / Putra</p>
+          <span>Value hotel • easy mall access</span>
+        </div>
+        <h2>Sunway Putra Hotel Kuala Lumpur</h2>
+        <p>Usually a practical option for guests who want hotel convenience and access to a mall.</p>
+        <div class="actions">
+          <a href="https://www.sunwayhotels.com/sunway-putra" target="_blank" rel="noopener">Check stay</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sunway%20Putra%20Hotel%20Kuala%20Lumpur" target="_blank" rel="noopener" class="secondary">Open map</a>
+        </div>
+      </article>
+    
+
+      <article class="card">
+        <div class="card-top">
+          <p class="eyebrow">Sri Hartamas</p>
+          <span>Boutique hotel • Hartamas area</span>
+        </div>
+        <h2>Dorsett Hartamas Kuala Lumpur</h2>
+        <p>A stylish nearby option for guests who want to stay around Hartamas/Mont Kiara.</p>
+        <div class="actions">
+          <a href="https://www.dorsetthotels.com/dorsett-hartamas-kuala-lumpur/" target="_blank" rel="noopener">Check stay</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Dorsett%20Hartamas%20Kuala%20Lumpur" target="_blank" rel="noopener" class="secondary">Open map</a>
+        </div>
+      </article>
+    
+
+      <article class="card">
+        <div class="card-top">
+          <p class="eyebrow">Mont Kiara</p>
+          <span>Design-led suites • group-friendly</span>
+        </div>
+        <h2>Arte Mont Kiara / Arte by Thomas Chan</h2>
+        <p>Good for guests considering apartment-style or design-suite stays near Publika.</p>
+        <div class="actions">
+          <a href="https://www.google.com/search?q=Arte+Mont+Kiara+hotel+booking" target="_blank" rel="noopener">Check stay</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Arte%20Mont%20Kiara%20Kuala%20Lumpur" target="_blank" rel="noopener" class="secondary">Open map</a>
+        </div>
+      </article>
+    
+
+      <article class="card">
+        <div class="card-top">
+          <p class="eyebrow">Mont Kiara / Publika</p>
+          <span>Best for groups • flexible layouts</span>
+        </div>
+        <h2>Airbnb around Mont Kiara / Publika</h2>
+        <p>Useful for families or friends sharing one apartment. Guests should check parking and self check-in rules.</p>
+        <div class="actions">
+          <a href="https://www.airbnb.com/s/Mont-Kiara--Kuala-Lumpur--Malaysia/homes" target="_blank" rel="noopener">Check stay</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Publika%20Mont%20Kiara%20Kuala%20Lumpur" target="_blank" rel="noopener" class="secondary">Open map</a>
+        </div>
+      </article>
+    
+    </section>
+
+    <section class="tips">
+      <strong>Booking tip:</strong> For convenience, Mont Kiara, Sri Hartamas, KL Midtown, Publika and Putra areas are practical zones to compare.
+      Guests coming in groups may prefer Airbnb or serviced residences, while guests who want a smoother hotel experience may prefer Hyatt, Sunway Putra or Dorsett-style options.
+    </section>
+
+    <footer>
+      With love, Matthew & Krystal<br />
+      Last updated: June 2026
+    </footer>
+  </main>
 </body>
 </html>
